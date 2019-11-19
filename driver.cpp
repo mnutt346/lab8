@@ -9,6 +9,7 @@
 #include <string>
 #include "driver.hpp"
 #include "fileReader.hpp"
+#include "simpleSearch.hpp"
 #include "menu.hpp"
 #include "inputValidation.hpp"
 
@@ -42,4 +43,19 @@ void driver()
     // Prompt user for an integer
     string option = "a target value";
     int targetNum = gameMenuRange(option, 0, 10);
+
+    // Search each file for the target number
+    bool foundInNumbers = simpleSearch(numbersArray, numbersArrayLength, targetNum);
+    bool foundInEarly = simpleSearch(earlyArray, earlyArrayLength, targetNum);
+    bool foundInMid = simpleSearch(midArray, midArrayLength, targetNum);
+    bool foundInEnd = simpleSearch(endArray, endArrayLength, targetNum);
+
+    // Print whether the target was found in each file
+    string found = "target value found";
+    string notFound = "target value not found";
+
+    cout << "numbers.txt: " << (foundInNumbers ? found : notFound) << endl
+         << "early.txt: " << (foundInEarly ? found : notFound) << endl
+         << "mid.txt: " << (foundInMid ? found : notFound) << endl
+         << "end.txt: " << (foundInEnd ? found : notFound) << endl;
 }

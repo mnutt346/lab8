@@ -31,7 +31,7 @@ int getFileLength(string fileName)
     return length;
 }
 
-void fileReader(string fileName, int *someArray)
+void fileReader(string fileName, int *targetArray)
 {
     ifstream fin(fileName);
     int number;
@@ -40,7 +40,7 @@ void fileReader(string fileName, int *someArray)
     // Read file contents into the array passed in
     while (fin >> number)
     {
-        someArray[fIndex] = number;
+        targetArray[fIndex] = number;
 
         fIndex++;
     }
