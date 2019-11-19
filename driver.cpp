@@ -105,6 +105,9 @@ void driver()
          << "mid.txt: " << (foundInMid ? found : notFound) << endl
          << "end.txt: " << (foundInEnd ? found : notFound) << endl;
 
+    cout << endl
+         << "Exiting program..." << endl;
+
     // Deallocate memory
     delete numbersArray;
     delete earlyArray;
