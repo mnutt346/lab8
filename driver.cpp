@@ -10,13 +10,13 @@
 #include "driver.hpp"
 #include "fileReader.hpp"
 #include "simpleSearch.hpp"
+#include "quickSort.hpp"
 #include "menu.hpp"
 #include "inputValidation.hpp"
 
 using std::cin;
 using std::cout;
 using std::endl;
-using std::ifstream;
 using std::ofstream;
 using std::string;
 
@@ -58,4 +58,39 @@ void driver()
          << "early.txt: " << (foundInEarly ? found : notFound) << endl
          << "mid.txt: " << (foundInMid ? found : notFound) << endl
          << "end.txt: " << (foundInEnd ? found : notFound) << endl;
+
+    // Sort the values in the arrays
+    quickSort(numbersArray, 0, numbersArrayLength - 1);
+    quickSort(earlyArray, 0, earlyArrayLength - 1);
+    quickSort(midArray, 0, midArrayLength - 1);
+    quickSort(endArray, 0, endArrayLength - 1);
+
+    // Print the values of each sorted array
+    cout << endl
+         << "Sorted numbers.txt: ";
+    for (int i = 0; i < numbersArrayLength; i++)
+    {
+        cout << numbersArray[i] << " ";
+    }
+
+    cout << endl
+         << "Sorted early.txt: ";
+    for (int i = 0; i < earlyArrayLength; i++)
+    {
+        cout << earlyArray[i] << " ";
+    }
+
+    cout << endl
+         << "Sorted mid.txt: ";
+    for (int i = 0; i < midArrayLength; i++)
+    {
+        cout << midArray[i] << " ";
+    }
+
+    cout << endl
+         << "Sorted end.txt: ";
+    for (int i = 0; i < endArrayLength; i++)
+    {
+        cout << endArray[i] << " ";
+    }
 }
