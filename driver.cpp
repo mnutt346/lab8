@@ -13,6 +13,7 @@
 #include "quickSort.hpp"
 #include "fileWriter.hpp"
 #include "filePrinter.hpp"
+#include "binSearch.hpp"
 #include "menu.hpp"
 #include "inputValidation.hpp"
 
@@ -84,4 +85,29 @@ void driver()
     filePrinter(earlyOutName);
     filePrinter(midOutName);
     filePrinter(endOutName);
+    cout << endl;
+
+    // Prompt user for another target number
+    cout << endl
+         << "Now we will use a binary search to find a desired number." << endl;
+    targetNum = gameMenuRange(option, 0, 10);
+
+    // User a binary search to find the given number
+    foundInNumbers = binSearch(numbersArray, numbersArrayLength, targetNum);
+    foundInEarly = binSearch(earlyArray, earlyArrayLength, targetNum);
+    foundInMid = binSearch(midArray, midArrayLength, targetNum);
+    foundInEnd = binSearch(endArray, endArrayLength, targetNum);
+
+    // Print results of binary search
+    cout << endl
+         << "numbers.txt: " << (foundInNumbers ? found : notFound) << endl
+         << "early.txt: " << (foundInEarly ? found : notFound) << endl
+         << "mid.txt: " << (foundInMid ? found : notFound) << endl
+         << "end.txt: " << (foundInEnd ? found : notFound) << endl;
+
+    // Deallocate memory
+    delete numbersArray;
+    delete earlyArray;
+    delete midArray;
+    delete endArray;
 }
