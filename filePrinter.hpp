@@ -1,16 +1,14 @@
 /**************************************************************************************
-** Program name: driver.hpp
+** Program name: filePrinter.hpp
 ** Author: Michael Nutt
 ** Date: 11/19/2019
-** Description: Header file for the driver function to run the program.
+** Description: Header file for the filePrinter function.
 **************************************************************************************/
-#ifndef DRIVER_HPP
-#define DRIVER_HPP
+#ifndef FILEPRINTER_HPP
+#define FILEPRINTER_HPP
 
 #include <string>
 
-void driver();
-
-std::string getOutFileName(std::string);
+void filePrinter(std::string);
 
 #endif

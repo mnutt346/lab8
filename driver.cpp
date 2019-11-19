@@ -11,6 +11,8 @@
 #include "fileReader.hpp"
 #include "simpleSearch.hpp"
 #include "quickSort.hpp"
+#include "fileWriter.hpp"
+#include "filePrinter.hpp"
 #include "menu.hpp"
 #include "inputValidation.hpp"
 
@@ -65,32 +67,21 @@ void driver()
     quickSort(midArray, 0, midArrayLength - 1);
     quickSort(endArray, 0, endArrayLength - 1);
 
-    // Print the values of each sorted array
-    cout << endl
-         << "Sorted numbers.txt: ";
-    for (int i = 0; i < numbersArrayLength; i++)
-    {
-        cout << numbersArray[i] << " ";
-    }
+    // Prompt user for names of output files
+    string numbersOutName = getOutFileName("numbers.txt");
+    string earlyOutName = getOutFileName("early.txt");
+    string midOutName = getOutFileName("mid.txt");
+    string endOutName = getOutFileName("end.txt");
 
-    cout << endl
-         << "Sorted early.txt: ";
-    for (int i = 0; i < earlyArrayLength; i++)
-    {
-        cout << earlyArray[i] << " ";
-    }
+    // Write sorted numbers to their respective files
+    fileWriter(numbersOutName, numbersArray, numbersArrayLength);
+    fileWriter(earlyOutName, earlyArray, earlyArrayLength);
+    fileWriter(midOutName, midArray, midArrayLength);
+    fileWriter(endOutName, endArray, endArrayLength);
 
-    cout << endl
-         << "Sorted mid.txt: ";
-    for (int i = 0; i < midArrayLength; i++)
-    {
-        cout << midArray[i] << " ";
-    }
-
-    cout << endl
-         << "Sorted end.txt: ";
-    for (int i = 0; i < endArrayLength; i++)
-    {
-        cout << endArray[i] << " ";
-    }
+    // Print the values of each file
+    filePrinter(numbersOutName);
+    filePrinter(earlyOutName);
+    filePrinter(midOutName);
+    filePrinter(endOutName);
 }

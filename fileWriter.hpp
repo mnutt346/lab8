@@ -1,15 +1,15 @@
 /**************************************************************************************
-** Program name: driver.hpp
+** Program name: fileWriter.hpp
 ** Author: Michael Nutt
 ** Date: 11/19/2019
-** Description: Header file for the driver function to run the program.
+** Description: Header file for the file-writing function.
 **************************************************************************************/
-#ifndef DRIVER_HPP
-#define DRIVER_HPP
+#ifndef FILEWRITER_HPP
+#define FILEWRITER_HPP
 
 #include <string>
 
-void driver();
+void fileWriter(std::string, int *, int);
 
 std::string getOutFileName(std::string);
 
