@@ -16,6 +16,12 @@ using std::endl;
 using std::ofstream;
 using std::string;
 
+/* Summary: Writes the contents of the given array to the output file of the given name
+ * Param: string outFileName -> name to be used for the output file
+ * Param: int *targetArray -> array of integers to be copied
+ * Param: int arrayLength -> length of the given array
+ * Return: N/A
+ */
 void fileWriter(string outFileName, int *targetArray, int arrayLength)
 {
     cout << "Writing to " << outFileName << "..." << endl;
@@ -30,6 +36,10 @@ void fileWriter(string outFileName, int *targetArray, int arrayLength)
     fout.close();
 }
 
+/* Summary:Gets the file name to be used for the output file
+ * Param: string inFileName -> name of the corresponding input file
+ * Return: string value representing the name of the new output file
+ */
 string getOutFileName(string inFileName)
 {
     string fileOutName;

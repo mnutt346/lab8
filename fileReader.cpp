@@ -11,6 +11,10 @@
 using std::ifstream;
 using std::string;
 
+/* Summary: Gets the length of the given file
+ * Param: string fileName -> name of file to be read
+ * Return: integer value representing the length of the file
+ */
 int getFileLength(string fileName)
 {
     int length = 0;
@@ -31,6 +35,11 @@ int getFileLength(string fileName)
     return length;
 }
 
+/* Summary: Reads the values fromthe target file and adds them to the given array
+ * Param: string fileName -> the name of the file from which the data is read
+ * Param: int *targetArray -> the array to which the data will be copied
+ * Return: N/A
+ */
 void fileReader(string fileName, int *targetArray)
 {
     ifstream fin(fileName);

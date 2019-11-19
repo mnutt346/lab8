@@ -14,6 +14,10 @@ using std::endl;
 using std::ifstream;
 using std::string;
 
+/* Summary: Prints the contents of the given file to the screen.
+ * Param: string fileName -> name of file from which data is read
+ * Return: N/A
+ */
 void filePrinter(string fileName)
 {
     ifstream fin(fileName);

@@ -6,6 +6,12 @@
 **************************************************************************************/
 #include "binSearch.hpp"
 
+/* Summary:Performs a binary search on the given array for the given target
+ * Param: int *targetArray -> array of integers to be searched
+ * Param: int arrayLength -> length of the given array
+ * Param: int targetValue -> target to be searched for
+ * Return: boolean value representing whether the target was found
+ */
 bool binSearch(int *targetArray, int arrayLength, int targetValue)
 {
     int low = 0;

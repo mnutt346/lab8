@@ -23,94 +23,98 @@ using std::endl;
 using std::ofstream;
 using std::string;
 
+/* Summary:Runs the interface for the program
+ * Param: N/A
+ * Return: N/A
+ */
 void driver()
 {
-    // Get the lengths of each file
-    int numbersArrayLength = getFileLength("numbers.txt");
-    int earlyArrayLength = getFileLength("early.txt");
-    int midArrayLength = getFileLength("mid.txt");
-    int endArrayLength = getFileLength("end.txt");
+     // Get the lengths of each file
+     int numbersArrayLength = getFileLength("numbers.txt");
+     int earlyArrayLength = getFileLength("early.txt");
+     int midArrayLength = getFileLength("mid.txt");
+     int endArrayLength = getFileLength("end.txt");
 
-    // Initialize empty arrays for each file with their respective lengths
-    int *numbersArray = new int[numbersArrayLength];
-    int *earlyArray = new int[earlyArrayLength];
-    int *midArray = new int[midArrayLength];
-    int *endArray = new int[endArrayLength];
+     // Initialize empty arrays for each file with their respective lengths
+     int *numbersArray = new int[numbersArrayLength];
+     int *earlyArray = new int[earlyArrayLength];
+     int *midArray = new int[midArrayLength];
+     int *endArray = new int[endArrayLength];
 
-    // Read contents of each file into its respective array
-    fileReader("numbers.txt", numbersArray);
-    fileReader("early.txt", earlyArray);
-    fileReader("mid.txt", midArray);
-    fileReader("end.txt", endArray);
+     // Read contents of each file into its respective array
+     fileReader("numbers.txt", numbersArray);
+     fileReader("early.txt", earlyArray);
+     fileReader("mid.txt", midArray);
+     fileReader("end.txt", endArray);
 
-    // Prompt user for an integer
-    string option = "a target value";
-    int targetNum = gameMenuRange(option, 0, 10);
+     // Prompt user for an integer
+     string option = "a target value";
+     int targetNum = gameMenuRange(option, 0, 10);
 
-    // Search each file for the target number
-    bool foundInNumbers = simpleSearch(numbersArray, numbersArrayLength, targetNum);
-    bool foundInEarly = simpleSearch(earlyArray, earlyArrayLength, targetNum);
-    bool foundInMid = simpleSearch(midArray, midArrayLength, targetNum);
-    bool foundInEnd = simpleSearch(endArray, endArrayLength, targetNum);
+     // Search each file for the target number
+     bool foundInNumbers = simpleSearch(numbersArray, numbersArrayLength, targetNum);
+     bool foundInEarly = simpleSearch(earlyArray, earlyArrayLength, targetNum);
+     bool foundInMid = simpleSearch(midArray, midArrayLength, targetNum);
+     bool foundInEnd = simpleSearch(endArray, endArrayLength, targetNum);
 
-    // Print whether the target was found in each file
-    string found = "target value found";
-    string notFound = "target value not found";
+     // Print whether the target was found in each file
+     string found = "target value found";
+     string notFound = "target value not found";
 
-    cout << "numbers.txt: " << (foundInNumbers ? found : notFound) << endl
-         << "early.txt: " << (foundInEarly ? found : notFound) << endl
-         << "mid.txt: " << (foundInMid ? found : notFound) << endl
-         << "end.txt: " << (foundInEnd ? found : notFound) << endl;
+     cout << "numbers.txt: " << (foundInNumbers ? found : notFound) << endl
+          << "early.txt: " << (foundInEarly ? found : notFound) << endl
+          << "mid.txt: " << (foundInMid ? found : notFound) << endl
+          << "end.txt: " << (foundInEnd ? found : notFound) << endl;
 
-    // Sort the values in the arrays
-    quickSort(numbersArray, 0, numbersArrayLength - 1);
-    quickSort(earlyArray, 0, earlyArrayLength - 1);
-    quickSort(midArray, 0, midArrayLength - 1);
-    quickSort(endArray, 0, endArrayLength - 1);
+     // Sort the values in the arrays
+     quickSort(numbersArray, 0, numbersArrayLength - 1);
+     quickSort(earlyArray, 0, earlyArrayLength - 1);
+     quickSort(midArray, 0, midArrayLength - 1);
+     quickSort(endArray, 0, endArrayLength - 1);
 
-    // Prompt user for names of output files
-    string numbersOutName = getOutFileName("numbers.txt");
-    string earlyOutName = getOutFileName("early.txt");
-    string midOutName = getOutFileName("mid.txt");
-    string endOutName = getOutFileName("end.txt");
+     // Prompt user for names of output files
+     string numbersOutName = getOutFileName("numbers.txt");
+     string earlyOutName = getOutFileName("early.txt");
+     string midOutName = getOutFileName("mid.txt");
+     string endOutName = getOutFileName("end.txt");
 
-    // Write sorted numbers to their respective files
-    fileWriter(numbersOutName, numbersArray, numbersArrayLength);
-    fileWriter(earlyOutName, earlyArray, earlyArrayLength);
-    fileWriter(midOutName, midArray, midArrayLength);
-    fileWriter(endOutName, endArray, endArrayLength);
+     // Write sorted numbers to their respective files
+     fileWriter(numbersOutName, numbersArray, numbersArrayLength);
+     fileWriter(earlyOutName, earlyArray, earlyArrayLength);
+     fileWriter(midOutName, midArray, midArrayLength);
+     fileWriter(endOutName, endArray, endArrayLength);
 
-    // Print the values of each file
-    filePrinter(numbersOutName);
-    filePrinter(earlyOutName);
-    filePrinter(midOutName);
-    filePrinter(endOutName);
-    cout << endl;
+     // Print the values of each file
+     filePrinter(numbersOutName);
+     filePrinter(earlyOutName);
+     filePrinter(midOutName);
+     filePrinter(endOutName);
+     cout << endl;
 
-    // Prompt user for another target number
-    cout << endl
-         << "Now we will use a binary search to find a desired number." << endl;
-    targetNum = gameMenuRange(option, 0, 10);
+     // Prompt user for another target number
+     cout << endl
+          << "Now we will use a binary search to find a desired number." << endl;
+     targetNum = gameMenuRange(option, 0, 10);
 
-    // User a binary search to find the given number
-    foundInNumbers = binSearch(numbersArray, numbersArrayLength, targetNum);
-    foundInEarly = binSearch(earlyArray, earlyArrayLength, targetNum);
-    foundInMid = binSearch(midArray, midArrayLength, targetNum);
-    foundInEnd = binSearch(endArray, endArrayLength, targetNum);
+     // User a binary search to find the given number
+     foundInNumbers = binSearch(numbersArray, numbersArrayLength, targetNum);
+     foundInEarly = binSearch(earlyArray, earlyArrayLength, targetNum);
+     foundInMid = binSearch(midArray, midArrayLength, targetNum);
+     foundInEnd = binSearch(endArray, endArrayLength, targetNum);
 
-    // Print results of binary search
-    cout << endl
-         << "numbers.txt: " << (foundInNumbers ? found : notFound) << endl
-         << "early.txt: " << (foundInEarly ? found : notFound) << endl
-         << "mid.txt: " << (foundInMid ? found : notFound) << endl
-         << "end.txt: " << (foundInEnd ? found : notFound) << endl;
+     // Print results of binary search
+     cout << endl
+          << "numbers.txt: " << (foundInNumbers ? found : notFound) << endl
+          << "early.txt: " << (foundInEarly ? found : notFound) << endl
+          << "mid.txt: " << (foundInMid ? found : notFound) << endl
+          << "end.txt: " << (foundInEnd ? found : notFound) << endl;
 
-    cout << endl
-         << "Exiting program..." << endl;
+     cout << endl
+          << "Exiting program..." << endl;
 
-    // Deallocate memory
-    delete numbersArray;
-    delete earlyArray;
-    delete midArray;
-    delete endArray;
+     // Deallocate memory
+     delete[] numbersArray;
+     delete[] earlyArray;
+     delete[] midArray;
+     delete[] endArray;
 }
